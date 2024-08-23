@@ -299,9 +299,8 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap (~> 5.0.2)
-  bootstrap-icons-helper (~> 1.0, >= 1.0.1)
   capybara
+  cssbundling-rails (~> 1.1)
   debug
   devise
   devise-bootstrap-views
@@ -310,14 +309,16 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   mini_racer
-  pg (= 1.5.4)
+  pg (>= 1.5.4, < 2.0)
   puma (~> 5.0)
   rails (~> 7.0.7)
+  rake (= 13.0.6)
   sassc-rails
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
+  tailwindcss-rails
   turbo-rails
   twitter-bootstrap-rails
   tzinfo-data

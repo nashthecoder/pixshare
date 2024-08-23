@@ -1,22 +1,28 @@
-<!-- _navbar.html.erb -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<%= stylesheet_link_tag 'application' %>
+<nav class="navbar navbar-expand-lg sticky-top" style="display: flex; justify-content: center; align-items: center; position: fixed; left: 0; width: 100%; background-color: #ffffff; color: #757575; padding: 6px;">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag("ps-icon.png", alt: "Pix Share Logo", class: "logo-image", style: "max-height:50px; max-width:50px; border-radius: 10px;") %>
+      <%= image_tag("ps-icon.png", alt: "Pix Share Logo", class: "logo-image", style: "max-height:50px; max-width:50px; border-radius: 10px;") %>
     <% end %>
+
+    <%= puts "Destroy User Session Path: #{destroy_user_session_path}" %>
+
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_photo_path %>">
-          <button type="button" class="btn btn-dark">
-            <%= bootstrap_icon "upload", width: 20, height: 20, fill: "white" %>
-          </button>
-        </a>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_photo_path %>">
+            <button type="button" class="btn btn-dark">
+              <%= bootstrap_icon "upload", width: 20, height: 20, fill: "white" %>
+            </button>
+          </a>
+        </li>
+      <% end %>
     </ul>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
       <form class="d-flex mx-auto" action="<%= search_index_path %>">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -31,7 +37,8 @@
             <% end %>
           </li>
           <li class="nav-item me-3">
-            <a class="btn btn-outline-dark" href="<%= destroy_user_session_path %>" data-method="delete">Logout</a>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+            <a rel="nofollow" data-method="delete" href="<%= destroy_user_session_path %>" class="btn btn-outline-dark">Logout</a>
           </li>
           <li class="nav-item">
             <%= link_to edit_user_registration_path, class: "nav-link" do %>
