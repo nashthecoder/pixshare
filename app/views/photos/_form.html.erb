@@ -1,7 +1,7 @@
-<%= form_with(model: photo) do |form| %>
+<%= form_with(model: photo, class: "form-horizontal") do |form| %>
   <% if photo.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h4>
       <ul>
         <% photo.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,23 +10,25 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", rows: 5 %>
   </div>
 
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
-    <p>If you want to add new images or replace existing ones, please select them here.</p>
+  <div class="form-group">
+    <%= form.label :images, class: "form-label" %>
+    <%= form.file_field :images, class: "form-control", multiple: true %>
+    <small class="form-text text-muted">
+      <em>If you want to add new images or replace existing ones, please select them here.</em>
+    </small>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit "Save", class: "btn btn-success" %>
   </div>
 <% end %>

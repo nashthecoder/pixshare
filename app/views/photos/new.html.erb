@@ -1,9 +1,11 @@
-<h1>New photo</h1>
+<div class="my-4">
+  <%= link_to "See Photos", photos_path, class: 'btn btn-secondary'  %>
+</div>
+
+<h2>Add Photos</h2>
 
 <%= render "form", photo: @photo %>
 
 <br>
 
-<div>
-  <%= link_to "Back to photos", photos_path %>
-</div>
+

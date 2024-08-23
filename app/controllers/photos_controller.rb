@@ -9,16 +9,27 @@ class PhotosController < ApplicationController
     @photo = Photo.new
   end
 
+  # def create
+  #   @photo = @user.photos.build(photo_params)
+  #   @photo.images.attach(params[:photo][:images]) # This attaches the uploaded image
+
+  #   if @photo.save
+  #     redirect_to @photo, notice: 'Photo was successfully created.'
+  #   else
+  #     render :new
+  #   end
+  # end
+
   def create
     @photo = @user.photos.build(photo_params)
-    @photo.images.attach(params[:photo][:images]) # This attaches the uploaded image
-
+  
     if @photo.save
       redirect_to @photo, notice: 'Photo was successfully created.'
     else
       render :new
     end
   end
+  
 
   def show
     @photo = Photo.find(params[:id])
